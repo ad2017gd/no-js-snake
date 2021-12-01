@@ -117,11 +117,10 @@ app.get('/iframe.html*', (req, res) => {
         data = iframe.replace("$REPLACE", `YOU LOST! <a href="/iframe.html?restart=1">Restart</a>`)
     } else {
         data = iframe.replace("$REPLACE", snake.toArray().map(e => e.join('')).join('<br>') + `<br><br>Score: ${snake.snakeSize - 3}`)
-
+        res.set("Refresh", "1; /iframe.html")
     }
 
     res.set("Content-Type", "text/html")
-    res.set("Refresh", "1; /iframe.html")
     res.send(data)
 })
 
