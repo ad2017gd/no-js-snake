@@ -124,6 +124,8 @@ app.get('/iframe.html*', (req, res) => {
     res.send(data)
 })
 
+app.set('trust proxy', true)
+
 app.listen(port, () => {
     console.log(`Started.`)
 })
